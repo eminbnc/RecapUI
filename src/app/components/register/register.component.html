@@ -1,0 +1,88 @@
+
+<section id="form"><!--form-->
+    <div class="container">
+        <div class="row">
+     
+            <div class="col-sm-5 example-full-width">
+              
+                <h2>Yazılım Geliştirici Üyelik Formu</h2>
+                <form [formGroup]="developerRegisterForm" >
+                  <mat-form-field class="col-sm-12">
+                    <input formControlName="firstName"  type="text" matInput   placeholder="İsim">
+                  </mat-form-field>
+                  <mat-form-field class="col-sm-12">
+                    <input formControlName="lastName" type="text" matInput   placeholder="Soy İsim">
+                  </mat-form-field>
+                  <mat-form-field class="col-sm-12">
+                    <input formControlName="email" type="email" matInput   placeholder="Email Adres">
+                  </mat-form-field>
+                    <mat-form-field class="col-sm-12">
+                      <input formControlName="password" type="password" matInput   placeholder="Parola">
+                    </mat-form-field>
+                    <mat-form-field class="col-sm-12">
+                      <input formControlName="birthDate"  type="date" matInput   placeholder="Doğum Tarihi">
+                    </mat-form-field>
+                  
+                    <mat-form-field class="col-sm-12">
+                      <input formControlName="adress"  type="text" matInput   placeholder="Adres">
+                    </mat-form-field>
+                   
+                    <mat-form-field class="col-sm-12">
+                      <input formControlName="summaryInformation"  type="text" matInput   placeholder="Ön Yazı">
+                    </mat-form-field>
+              <div class="range range-warning pull-right">
+                  <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerDeveloperClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                </div>
+              </form>
+                
+        </div>
+
+ 
+            <div class="col-sm-1">
+                <h2 class="or">VEYA</h2>
+            </div>
+            <div class="col-sm-5 example-full-width">
+                    <h2>Şirket Üyelik Formu</h2>
+                    <form [formGroup]="companyRegisterForm" >
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="companyName"  type="text" matInput   placeholder="Şirket İsim">
+                      </mat-form-field>
+                    <mat-form-field class="col-sm-12">
+                        <input formControlName="firstName"  type="text" matInput   placeholder="İsim">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="lastName" type="text" matInput   placeholder="Soy İsim">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="email" type="email" matInput   placeholder="Email Adres">
+                      </mat-form-field>
+                    <mat-form-field class="col-sm-12">
+                        <input formControlName="password"  type="password" matInput   placeholder="Parola">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="city"  type="text" matInput   placeholder="Şehir">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="district"  type="text" matInput   placeholder="İlçe">
+                      </mat-form-field>
+                    
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="taxAdministratationCity"  type="text" matInput   placeholder="Vergi dairesi İl">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="taxAdministratationDistrict"  type="text" matInput   placeholder="Vergi dairesi İlçe">
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12">
+                        <input formControlName="companyUrl"  type="text" matInput   placeholder="Şirket Web Adresi">
+                      </mat-form-field>
+                  <div class="range range-warning pull-right">
+                      <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerDeveloperClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                    </div>
+                  </form>
+               
+                    
+              
+            </div>
+        </div>
+    </div>
+</section><!--/form-->

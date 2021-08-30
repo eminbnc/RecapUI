@@ -1,0 +1,44 @@
+
+<section id="form"><!--form-->
+    <div class="container">
+        <div class="row">
+     
+            <div class="col-sm-5  example-full-width">
+                <div class="row"><!--login form-->
+                    <h2 >Yazılımcı Giriş</h2>
+                    <form [formGroup]="loginFormDeveloper" >
+                        <mat-form-field class="col-sm-12">
+                            <input formControlName="email" type="email" matInput   placeholder="Email Adresi">
+                          </mat-form-field>
+                          <mat-form-field class="col-sm-12">
+                            <input formControlName="password" type="password" matInput   placeholder="Parola">
+                          </mat-form-field>
+                    <div class="range range-warning pull-right">
+                        <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="loginDeveloperClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                      </div>
+                    </form>
+                </div><!--/login form-->
+            </div>
+ 
+            <div class="col-sm-1">
+                <h2 class="or">VEYA</h2>
+            </div>
+            <div class="col-sm-5  example-full-width">
+                <div class="row"><!--login form-->
+                    <h2 >Şirket  Giriş</h2>
+                    <form [formGroup]="loginFormCompany" >
+                        <mat-form-field class="col-sm-12">
+                            <input formControlName="email" type="email" matInput   placeholder="Email Adresi">
+                          </mat-form-field>
+                          <mat-form-field class="col-sm-12">
+                            <input formControlName="password" type="password" matInput   placeholder="Parola">
+                          </mat-form-field>
+                    <div class="range range-warning pull-right">
+                        <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="loginCompanyClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                      </div>
+                    </form>
+                </div><!--/login form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
