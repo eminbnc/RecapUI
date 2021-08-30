@@ -28,12 +28,15 @@
                     </mat-form-field>
                    
                     <mat-form-field class="col-sm-12">
-                      <input formControlName="summaryInformation"  type="text" matInput   placeholder="Ön Yazı">
+                      <mat-label>Ön Yazı</mat-label>
+                      <textarea formControlName="summaryInformation" matInput placeholder=""></textarea>
                     </mat-form-field>
+                  
               <div class="range range-warning pull-right">
-                  <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerDeveloperClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                  <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerDeveloperClick()" >Kayıt Ol <i class="fa fa-user"></i></a>
                 </div>
               </form>
+              <mat-checkbox class="example-margin" [(ngModel)]="checked">Şirketler Verilerime Ulaşsın</mat-checkbox>
                 
         </div>
 
@@ -76,12 +79,9 @@
                         <input formControlName="companyUrl"  type="text" matInput   placeholder="Şirket Web Adresi">
                       </mat-form-field>
                   <div class="range range-warning pull-right">
-                      <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerDeveloperClick()" >Giriş Yap <i class="fa fa-user"></i></a>
+                      <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="registerCompanyClick()" >Kayıt Ol <i class="fa fa-user"></i></a>
                     </div>
                   </form>
-               
-                    
-              
             </div>
         </div>
     </div>

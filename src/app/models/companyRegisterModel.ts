@@ -10,5 +10,5 @@ export interface CompanyRegisterModel{
     district:string,
     taxAdministratationCity:string,
     taxAdministratationDistrict:string,
-    city:string,
+    city:string
 }

@@ -1,5 +1,7 @@
 import { ResponseModel } from "./responseModel";
 
 export interface LoginResponseModel extends ResponseModel{
-  userId:number
+  userId:number,
+  claim:string
+
 }

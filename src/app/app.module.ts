@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms"
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
+import { JobPostingComponent } from './components/job-posting/job-posting.component';
+import { CompanyPageComponent } from './components/company-page/company-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import { RegisterComponent } from './components/register/register.component';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserProfileComponent,
+    CompanyProfileComponent,
+    JobPostingComponent,
+    CompanyPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +52,15 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     MatInputModule,
     MatTableModule,
+    MatCheckboxModule
 
   ],
-  providers: [{provide:"apiUrl",useValue:"https://localhost:44317/api/"}],
+  providers: [{
+    provide:"apiUrl",useValue:"https://localhost:44317/api/"
+  },
+{
+ provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

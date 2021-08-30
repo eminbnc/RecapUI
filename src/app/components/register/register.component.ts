@@ -4,7 +4,9 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserRegisterModel } from 'src/app/models/userRegisterModel';
 import { CompanyService } from 'src/app/services/company.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,7 +18,10 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent implements OnInit {
   developerRegisterForm:FormGroup;
   companyRegisterForm:FormGroup;
-  constructor(private toastrService:ToastrService,private userService:UserService,private companyService:CompanyService,private formBuilder:FormBuilder) { }
+  checked=false;
+  registerDeveloperModeel:UserRegisterModel;
+  constructor(private toastrService:ToastrService,private userService:UserService,
+    private companyService:CompanyService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
     this.createDeveloperRegisterForm();
@@ -33,7 +38,6 @@ export class RegisterComponent implements OnInit {
       adress: ['', Validators.required],
       birthDate: ['', Validators.required],
       summaryInformation: ['', Validators.required],
-      
     });
   }
 
@@ -55,15 +59,20 @@ export class RegisterComponent implements OnInit {
 
   registerDeveloperClick() {
     if (this.developerRegisterForm.valid) {
-      let registerModel=Object.assign({},this.developerRegisterForm.value);
-      this.userService.register(registerModel).subscribe(response=>{
+      this.registerDeveloperModeel=Object.assign({},this.developerRegisterForm.value);
+      this.registerDeveloperModeel.visibility=this.checked;
+      this.userService.register(this.registerDeveloperModeel).subscribe(response=>{
         this.toastrService.success(response.message);
+        this.router.navigate(['login']);
       },responseError=>{
-        if(responseError.error.Errors.length>0){
-          console.log(responseError.error.Errors);
+        console.log(responseError)
+        if(responseError.error.length!=null){
           for(let i=0; i<responseError.error.Errors.length;i++){
             this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama Hatası");
           }
+        }
+        else{
+          this.toastrService.error(responseError.error.message);
         }
       })
     }
@@ -73,18 +82,18 @@ export class RegisterComponent implements OnInit {
   }
   registerCompanyClick() {
     if (this.companyRegisterForm.valid) {
-      let registerModel=Object.assign({},this.developerRegisterForm.value);
-      this.userService.register(registerModel).subscribe(response=>{
+      let registerModel=Object.assign({},this.companyRegisterForm.value);
+      this.companyService.register(registerModel).subscribe(response=>{
         this.toastrService.success(response.message);
+        this.router.navigate(['login']);
       },responseError=>{
-        if(responseError.error.Errors.length>0){
-          console.log(responseError.error.Errors);
+        if(responseError.error.Errors.length!=0){
           for(let i=0; i<responseError.error.Errors.length;i++){
             this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama Hatası");
           }
         }
         else{
-          this.toastrService.error("Farklı bir email adresi giriniz.");
+          this.toastrService.error(responseError.error.message);
         }
       })
     }

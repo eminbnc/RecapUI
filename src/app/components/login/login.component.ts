@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       this.userService.login(loginModel).subscribe(response=>{
         this.toastrService.success(response.message);
         localStorage.setItem("token",response.data.token);
+        localStorage.setItem("user" , response.userId.toString())
+        localStorage.setItem("claim" ,response.claim)
       },responseError=>{
         if(responseError.error.Errors.length>0){
           console.log(responseError.error.Errors);
@@ -54,11 +56,13 @@ export class LoginComponent implements OnInit {
     }
   }
   loginCompanyClick() {
-    if (this.loginFormDeveloper.valid) {
-      let loginModel=Object.assign({},this.loginFormDeveloper.value);
+    if (this.loginFormCompany.valid) {
+      let loginModel=Object.assign({},this.loginFormCompany.value);
       this.companyService.login(loginModel).subscribe(response=>{
         this.toastrService.success(response.message);
         localStorage.setItem("token",response.data.token);
+        localStorage.setItem("user" , response.userId.toString())
+        localStorage.setItem("claim" ,response.claim)
       })
     }
   }
