@@ -32,16 +32,28 @@
           <div class="container" style="outline: 0;" routerLink="">
           <h2 ><span style="color: rgb(80, 141, 255);">RECAP</span>UI</h2>
         </div>
+     
       </div>
         <div class="col-md-8" >
           <div class="shop-menu clearfix pull-right">
+
             <ul *ngIf="loggedIn()" class="nav navbar-dark">
+              
               <li *ngIf="isDeveloper()" routerLink="jobposting"><a ><i class="fa fa-check-square"></i>Başvurulan İş İlanları</a></li>
+              
+
               <li *ngIf="isCompany()" routerLink="companypage"><a ><i class="fa fa-check-square"></i>Şirket Sayfası</a></li>
               <li routerLink="login" (click)="logout()"><a ><i class="fa fa-sign-out"></i> Çıkış Yap</a></li>
-              <li ><a ><i class="fa fa-user"></i> Profil</a></li>
+              
+              <li *ngIf="isDeveloper()" routerLink="resume" ><a ><i class="fa fa-user"></i><button mat-button [matMenuTriggerFor]="menu">Profil</button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item>Kullanıcı Bilgileri</button>
+                <button mat-menu-item>ÖzGeçmiş</button>
+                <button mat-menu-item>Eğitim</button>
+                <button mat-menu-item>İş Deneyimleri</button>
+                </mat-menu> </a></li>
               </ul>
-              <ul *ngIf="!loggedIn()" class="nav navbar-dark">
+              <ul  *ngIf="!loggedIn()" class="nav navbar-dark">
               <li routerLink="register"><a ><i class="fa fa-user"></i> Üye Ol</a></li>
               <li routerLink="login"><a><i class="fa fa-lock"></i> Giriş Yap</a></li>
             </ul>

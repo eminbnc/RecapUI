@@ -1,0 +1,26 @@
+<div class="panel panel-default" *ngFor="let jobposting of jobPostingArray">
+<mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{jobposting.companyName}} 
+      </mat-panel-title>
+      <mat-panel-title>
+         {{jobposting.position}}
+      </mat-panel-title>
+      <mat-panel-title>
+        {{jobposting.position}}
+     </mat-panel-title>
+     <mat-panel-title>
+      {{jobposting.language}}
+   </mat-panel-title>
+   <mat-panel-title>
+    İlan Kapanış: {{jobposting.endDate}}
+ </mat-panel-title>
+      <mat-panel-description>
+       {{panelOpenState ? 'Detayı Kapat' : 'Detayı Görüntüle'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    {{jobposting.jobDetail}}
+  </mat-expansion-panel>
+</div>

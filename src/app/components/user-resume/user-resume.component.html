@@ -1,0 +1,8 @@
+<div *ngFor="let resume of resumeModel">
+<pdf-viewer
+src={{resume.resumeUrl}}
+[render-text]="true"
+style="display: block;">
+
+</pdf-viewer>
+</div>

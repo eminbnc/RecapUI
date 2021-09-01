@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,29 +9,29 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private toastrService:ToastrService) { }
+  jwtHelper:any = new JwtHelperService();
+  decodedToken:any;
+  constructor(private toastrService:ToastrService,private authService:AuthService) { }
 
   ngOnInit(): void {
   }
 
   loggedIn(){
-    const token=localStorage.getItem("token");
-    return token?true:false;
+   return this.authService.loggedIn();
   }
   logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("claim");
     this.toastrService.info("Çıkış işlemi yapıldı");
   }
   isDeveloper(){
      const claim=localStorage.getItem("claim");
-     console.log("-------------------------------------")
     if(claim?.toString()==="developer"){ return true}
     else return false
   }
   isCompany(){
     const token=localStorage.getItem("claim");
-    console.log("-----------")
     if(token=="company"){ return true}
     else return false
    

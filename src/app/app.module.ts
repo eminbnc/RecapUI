@@ -23,6 +23,15 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
 import { JobPostingComponent } from './components/job-posting/job-posting.component';
 import { CompanyPageComponent } from './components/company-page/company-page.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { AuthUserGuard } from './_guards/auth-user-guard';
+import { AuthCompanyGuard } from './_guards/auth-company-guard';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatNativeDateModule} from '@angular/material/core';
+import { UserResumeComponent } from './components/user-resume/user-resume.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer'
+
 
 @NgModule({
   declarations: [
@@ -34,7 +43,9 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
     UserProfileComponent,
     CompanyProfileComponent,
     JobPostingComponent,
-    CompanyPageComponent
+    CompanyPageComponent,
+    UserResumeComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,12 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
     HttpClientModule,
     MatInputModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    PdfViewerModule
 
   ],
   providers: [{
@@ -60,7 +76,9 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
   },
 {
  provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
-}],
+},
+AuthUserGuard,
+AuthCompanyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

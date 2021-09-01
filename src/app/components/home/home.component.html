@@ -1,1 +1,35 @@
-<p>home works!</p>
+<mat-drawer-container>
+ <mat-drawer-content>
+    <div class="panel panel-default" *ngFor="let jobposting of jobPostingArray">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{jobposting.companyName}} 
+            </mat-panel-title>
+            <mat-panel-title>
+               {{jobposting.position}}
+            </mat-panel-title>
+            <mat-panel-title>
+              {{jobposting.position}}
+           </mat-panel-title>
+           <mat-panel-title>
+            {{jobposting.language}}
+         </mat-panel-title>
+         <mat-panel-title>
+          İlan Kapanış: {{jobposting.endDate}}
+       </mat-panel-title>
+            <mat-panel-description>
+             {{panelOpenState ? 'Detayı Kapat' : 'Detayı Görüntüle'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          {{jobposting.jobDetail}}
+          <div class="range range-warning pull-right">
+            <a class="btn btn-default" style="background-color:#0f9efe ; color: #FFFFFF;" (click)="jobposting">Başvuru Yap <i class="fa fa-user"></i></a>
+          </div>
+        </mat-expansion-panel>
+      
+      </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
